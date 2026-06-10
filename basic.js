@@ -14,10 +14,10 @@
 
 
 
-//leacture 2
-//"use strict"; // treat all js code as newer version
+// leacture 2
+// "use strict"; // treat all js code as newer version
 
-//alert(3 + 4); // we are using nodejs ,not browser so alert will not work 
+// alert(3 + 4); // we are using nodejs ,not browser so alert will not work 
 // there are some data types in js
 // 1. number => 2 to power 53 -1;
 // 2. bigint  
@@ -39,7 +39,7 @@
 
 
 
-//********************data types**************************
+// ********************data types**************************
 // // datatype conversion
 
 // let score = 100 
@@ -78,7 +78,7 @@
 
 
 
-//*******************operations ********* */
+// *******************operations ********* */
  
 // console.log(5**2); // 25
 // // addition OF string
@@ -99,7 +99,7 @@
 // console.log(gamecounter); // 101
 
 
-//comparison operators  -->    answer true or false
+// comparison operators  -->    answer true or false
 //    console.log(5 > 3); // true
 //     console.log("2"< 3); // false, not predictable because of string comparison
 //     console.log(undefined < 0); // false, not predictable because of string comparison
@@ -111,8 +111,8 @@
 //     console.log(5 ==="5"); // false (strict equality, no type coercion)  isme data type bhi check hota hai
 
 
-//***********************data types**************************
-//on the basis of storeing value
+// ***********************data types**************************
+// on the basis of storeing value
 // 1. primitive data types => number, bigint, string, boolean, null, undefined, symbol  ye sab call by value hota hai mtlab inme stored value directly variable 
 // me store hota hai, aur jab hum ek variable ko dusre variable me assign karte hai to value copy hoti hai, dono variable alag alag memory location pe store hote
 //  hai, isliye ek variable me change karne se dusre variable me koi effect nahi hota hai.
@@ -154,4 +154,71 @@
 //  hai based on the value assigned to the variable.
 
 
+//***************************memoery ************************* */
 
+//stack(primitive data types) and heap (non-primitive data types) memory allocation
+//stack memory => when a variable is assigned to another , you get a copy of the value,
+//and both variables are independent of each other, because they are stored in different memory locations.
+
+// heap memory => when a variable is assigned to another, you get a reference to the same value,
+//  and both variables are dependent on each other, because they are stored in the same memory location.
+
+let myyoutube = "rajattiwari";
+let anotheryoutube = myyoutube; // copy of the value is created in stack memory
+  anotheryoutube = "rajattiwari2"; // change the value of anotheryoutube
+console.log(anotheryoutube); // rajattiwari
+console.log(myyoutube); // rajattiwari (myyoutube is not affected because it is stored in a different memory location)
+
+let user1 = {
+   name: "rajattiwari",
+    age: 30
+   };
+   let user2 = user1; // reference to the same object is created in heap memory
+   user2.name = "rajattiwari2"; // change the name property of user2
+   console.log(user2.name); // rajattiwari2
+   console.log(user1.name); // rajattiwari2 (user1 is affected because it is 
+                           // stored in the same memory location as user2)
+                           
+
+/************************string********************* */
+ // string declaration
+ const game = new String("football"); // string object
+ console.log(game); // string literal
+ console.log(typeof game); // object (string is a primitive data type, but when we create a string object using the String constructor, it becomes an object)
+
+const myname = "rajattiwari";
+const repocount = 1000;
+
+console.log(myname + repocount); // rajattiwari1000 (string concatenation because of the presence of string
+console.log(`hello my name is ${myname} and my repo count is ${repocount}`); // (``)backticks are used for template literals, which allow for string interpolation and multi-line strings
+
+//uses of key value pairs in js
+
+console.log(myname.length); // 11 (length property of string)
+console.log(myname.toUpperCase()); // RAJATTIWARI (toUpperCase method of string)
+console.log(myname.toLowerCase()); // rajattiwari (toLowerCase method of string)
+console.log(myname.charAt(2)); // j (charAt method of string)
+console.log(myname.indexOf("t")); // 5 (indexOf method of string, returns the index of the first occurrence of the specified value, or -1 if not found)
+console.log(myname.includes("tti")); // true (includes method of string, returns true if the string contains the specified value, otherwise false)
+console.log(myname.startsWith("raja")); // true (startsWith method of string, returns true if the string starts with the specified value, otherwise false)
+console.log(myname.endsWith("wari")); // true (endsWith method of string, returns true if the string ends with the specified value, otherwise false)    
+
+const newstring  = gameName.substring(0, 4); // substring method of string, returns the part of the string between the start and end indexes, or to the end of the string if the end index is omitted
+console.log(newstring); // foot (substring from index 0 to 4, not including 4)
+
+const newstring2 = gameName.slice(-6, 4); // slice method of string, returns the part of the string between the start and end indexes, or to the end of the string if the end index is omitted
+console.log(newstring2); // ball (slice from index -6 to 4, not including 4)
+
+const newstring1 = "   rajat  " ;
+console.log(newstring1); // "   rajat  " (string with whitespace)
+console.log(newstring1.trim()); // "rajat" (trim method of string, removes whitespace from both ends of the string) 
+// trim starts from es5, it is used to remove whitespace from both ends of a string, but it does not change the original string, it returns a new string with the whitespace removed.      
+// trim endsWith method of string, returns true if the string ends with the specified value, otherwise false)
+
+const url = "https://www.youtube.com/channel/UC9r3qWwYjvH8sQhXyZtH7A";
+url.replace(url.replace('uc9r', 'rajat')); // replace method of string, returns a new string with some or all matches of a pattern replaced by a replacement, the original string is not changed
+console.log(url); // https://www.youtube.com/channel/UC9r3qWwYjvH8sQhXyZtH7A (original string is not changed)
+
+console.log(url.includes("youtube")); // true (includes method of string, returns true if the string contains the specified value, otherwise false )
+
+console.log(gameName.split("o")); // ["f", "tball"] (split method of string, splits a string into an array of substrings, and returns the new array, the original string is not changed 
